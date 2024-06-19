@@ -1,0 +1,62 @@
+/* CSS pour styliser les inputs */
+
+/* Appliquer une marge en bas à chaque champ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Appliquer une couleur de fond légère et une bordure arrondie aux champs de texte */
+input[type="text"],
+input[type="number"],
+textarea {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box; /* Assure que la largeur inclut également la bordure et le padding */
+}
+
+/* Appliquer une couleur de fond légère et une bordure arrondie aux boutons */
+button[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Styler les labels pour les rendre plus visibles */
+label {
+    font-weight: bold;
+}
+
+/* Ajouter de l'espace entre les labels et les inputs */
+label,
+input,
+textarea {
+    display: block;
+}
+
+/* Ajouter un peu d'espace entre les éléments du formulaire */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Style spécifique pour les inputs de type "number" */
+input[type="number"] {
+    width: 50%; /* Ajuster la largeur pour les inputs de type nombre */
+}
+
+/* Style spécifique pour les textarea */
+textarea {
+    height: 100px; /* Ajuster la hauteur des zones de texte */
+}
+
+/* Style pour les inputs de type nombre total, fonctionnelles et non fonctionnelles */
+.form-group input[type="number"] {
+    width: calc(33% - 10px); /* Répartir les inputs de nombre total, fonctionnelles et non fonctionnelles sur la largeur du conteneur */
+    margin-right: 10px; /* Ajouter un espace entre les inputs */
+}
