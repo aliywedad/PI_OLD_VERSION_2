@@ -3,9 +3,11 @@ import './pages/wilaya.dart';
 import './exampls/statfulwideget.dart';
 import './pages/Navbar.dart';
 import './pages/commin.dart';
+import './pages/login.dart';
+
 
 void main() {
-  runApp(BottomNavBar());
+  runApp(MyWidget());
 }
 
 int i = 0;
@@ -18,23 +20,8 @@ class MyWidget extends StatefulWidget {
 class _Myapp extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text("hejjjllo"),
-      ),
-      body: Container(
-        child: Column(children: [
-          Text("hello $i"),
-          IconButton(
-              onPressed: () {
-                setState(() {
-                  i++;
-                });
-              },
-              icon: Icon(Icons.add))
-        ]),
-      ),
-    ));
+    return  MaterialApp(
+        home:LoginPage(),
+    );
   }
 }

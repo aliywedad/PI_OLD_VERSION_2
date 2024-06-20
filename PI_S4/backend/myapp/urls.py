@@ -47,11 +47,17 @@ urlpatterns = [
     path('AddCommin/', views.AddCommin, name='AddCommin'),   
     path('AddVillage/', views.AddVillage, name='AddVillage'),   
     path('predict/', views.predict, name='predict'), 
+    path('list_questions/', views.list_questions, name='list_questions'), 
 
 
 
     # *************************************************** ( mobile )***********************************************************
-          path('hello/',mobile.Hello, name='helllo'), 
+        #   path('hello/',mobile.Hello, name='helllo'), 
+    path('Connexion/',mobile.Connexion, name='Connexion'), 
+    path('village_info/',mobile.village_info, name='village_info'), 
+    path('TypeInfra/',mobile.TypeInfra, name='TypeInfra'), 
+    path('InfraVillage/',mobile.villageInfra_info, name='InfraVillage'), 
+    path('Upload_Reponses/',mobile.Upload_Reponses, name='Upload_Reponses'), 
 
 ]
 

@@ -57,6 +57,15 @@ def forms(request):
     return Response(forms_data)
 
 @api_view(['GET'])
+
+def list_questions(request):
+    questions = Question.objects.all()
+    if not questions.exists():
+        return Response({"message": "no data"}, status=204)  # 204 No Content is more appropriate here
+    serializer = QuestionSerializer(questions, many=True)
+    return Response(serializer.data, status=200)  # 
+
+@api_view(['GET'])
 def predict(request):
     forms_data = []
     try:
@@ -659,6 +668,11 @@ def inserer_donnees(request):
         gmt = pytz.timezone('GMT')
         gmt_time = datetime.now(gmt)
         infrastructures = data.get('infrastructures', [])
+        print(village_id)
+        print("questions **************************************")
+        print(questions)
+        print("**************************************************")
+        print(infrastructures)
         try:
             village = Village.objects.get(NumeroVillage=village_id)
             if infrastructures:
@@ -669,6 +683,7 @@ def inserer_donnees(request):
                         fonctionnelles = int(i['fonctionnelles'])
                         nonFonctionnelles = int(i['nonFonctionnelles'])
                         total = int(i['total'])
+                        infra=Infrastructur.objects.get(id=typeInfra)
 
                         print("Creating infrastructure with:")
                         print(f"Village: {village}")
@@ -679,9 +694,10 @@ def inserer_donnees(request):
                         print(f"Date: {gmt_time}")
 
                         # Créer ou mettre à jour l'infrastructure
-                        InfrastructuresVillage.objects.create(NumeroVillage=village,TypeInfrastructure=i['typeInfra'],NombreNonFonctionnelles=i['nonFonctionnelles'],NombreFonctionnelles=i['fonctionnelles'],NombreTotal=i['total'],date_info=gmt_time)
+                        InfrastructuresVillage.objects.create(NumeroVillage=village,TypeInfrastructure=infra,NombreNonFonctionnelles=i['nonFonctionnelles'],NombreFonctionnelles=i['fonctionnelles'],NombreTotal=i['total'],date_info=gmt_time)
 
                     except ValueError as e:
+                        print(e)
                         return JsonResponse({'message': f'Erreur de conversion: {str(e)}'}, status=400)
 
             for question in questions:

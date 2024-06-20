@@ -5,6 +5,14 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = users
         fields ='__all__'
+class ReponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reponse
+        fields ='__all__'
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields ='__all__'
 class WilayaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wilaya
